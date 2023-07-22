@@ -57,7 +57,7 @@ function getMarks() {
          if (sameAndEqual(answer, correctAnswer)) {
             marksCount += 2;
             answerElementsString += createAnswerElement("true", `Q${i + 1}`, " +2", correctAnswer, answer);
-         } else if (same(answer, correctAnswer)) {
+         } else if (same(answer, correctAnswer) && every(answer, correctAnswer)) {
             const inDe = (answer.split(",").join("").length / correctAnswer.split(",").join("").length) * 2;
             marksCount += inDe;
             answerElementsString += createAnswerElement("true", `Q${i + 1}`, ` +${inDe.toFixed(2)}`, correctAnswer, answer);
@@ -78,6 +78,10 @@ function getMarks() {
 
 function answerFilter(ans) {
    return !ans.split("").some(e => e == "A" || e == "B" || e == "C" || e == "D");
+}
+
+function every(ans, corrAns) {
+   return corrAns.split(",").every(a => ans.split(",").some(cAns => cAns == a));
 }
 
 // check equality and same values
