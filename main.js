@@ -77,7 +77,7 @@ function getMarks() {
 }
 
 function answerFilter(ans) {
-   return ans.split(",").some(e => e == "A" || e == "B" || e == "C" || e == "D");
+   return !ans.split("").some(e => e == "A" || e == "B" || e == "C" || e == "D");
 }
 
 // check equality and same values
@@ -92,7 +92,7 @@ function same(a1, a2) {
 }
 
 submit.addEventListener("click", () => {
-   let ans = answerInput.value.toUpperCase().replace(/\s/g, " ").split(" ");
+   let ans = (`${answerInput.value}  -`).toUpperCase().replace(/\s/g, " ").split(" ");
    if (!getAnswersFromStr(ans)) return;
    getMarks();
    marksVal.innerText = marksCount.toFixed(2);
