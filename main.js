@@ -10,6 +10,7 @@ let marksCount = 0;
 let nagative = 0;
 let answerElementsString = "";
 
+document.body.style.width = `${window.innerWidth}px`;
 document.body.style.height = `${window.innerHeight}px`;
 
 groupSelection.addEventListener("change", () => {
