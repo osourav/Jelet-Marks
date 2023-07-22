@@ -51,7 +51,9 @@ function getMarks() {
       const answer = answers[i];
       const correctAnswer = GroupAns[currentGroupSelection][i];
 
-      if ((i >= 30 && i < 40) || (i >= 65 && i < 70) || (i >= 85 && i < 90)) {
+      if (answerFilter(answer)) {
+         answerElementsString += createAnswerElement("false", `Q${i + 1}`, ` 0`, correctAnswer, answer);
+      } else if ((i >= 30 && i < 40) || (i >= 65 && i < 70) || (i >= 85 && i < 90)) {
          if (sameAndEqual(answer, correctAnswer)) {
             marksCount += 2;
             answerElementsString += createAnswerElement("true", `Q${i + 1}`, " +2", correctAnswer, answer);
@@ -72,6 +74,10 @@ function getMarks() {
 
    }
    marksCount += nagative;
+}
+
+function answerFilter(ans) {
+   return ans.split(",").some(e => e == "A" || e == "B" || e == "C" || e == "D");
 }
 
 // check equality and same values
