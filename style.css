@@ -145,9 +145,13 @@ tr td:first-child {
    font-weight: bold;
 }
 tr:first-child td:nth-child(2),
-tr:first-child td:nth-child(3),
+tr:first-child td:nth-child(3) {
+   border-radius: 0;
+   background: #00ff0033;
+}
 tr:first-child td:nth-child(4) {
-   background: transparent;
+   border-radius: 0;
+   background: #ff000033;
 }
 tr td:nth-child(2),
 tr td:nth-child(3) {
@@ -155,7 +159,7 @@ tr td:nth-child(3) {
    font-family: cursive;
 }
 tr td:nth-child(4) {
-   background: #ff0000;
+   background: #ff3838;
    font-family: cursive;
 }
 
