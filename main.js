@@ -57,7 +57,7 @@ function getMarks() {
          if (sameAndEqual(answer, correctAnswer)) {
             marksCount += 2;
             answerElementsString += createAnswerElement("true", `Q${i + 1}`, " +2", correctAnswer, answer);
-         } else if (same(answer, correctAnswer) && every(answer, correctAnswer)) {
+         } else if (equal(answer, correctAnswer)) {
             const inDe = (answer.split(",").join("").length / correctAnswer.split(",").join("").length) * 2;
             marksCount += inDe;
             answerElementsString += createAnswerElement("true", `Q${i + 1}`, ` +${inDe.toFixed(2)}`, correctAnswer, answer);
@@ -80,19 +80,15 @@ function answerFilter(ans) {
    return !ans.split("").some(e => e == "A" || e == "B" || e == "C" || e == "D");
 }
 
-function every(ans, corrAns) {
-   return corrAns.split(",").every(a => ans.split(",").some(cAns => cAns == a));
-}
-
 // check equality and same values
 function sameAndEqual(a1, a2) {
    return a1.length === a2.length &&
       a1.split(",").some(ans => a2.split(",").some(cAns => cAns == ans));
 }
 
-// check same values
-function same(a1, a2) {
-   return a1.split(",").some(ans => a2.split(",").some(cAns => cAns == ans));
+// check equal values
+function equal(a1, a2) {
+   return a1.split(",").every(ans => a2.split(",").some(cAns => cAns == ans));
 }
 
 submit.addEventListener("click", () => {
