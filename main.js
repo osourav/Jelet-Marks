@@ -8,6 +8,12 @@ let answers = [];
 let currentGroupSelection = "A"
 let marksCount = 0;
 let nagative = 0;
+let q2Count = 0;
+let qCount = {
+   q1: 0,
+   q2: 0,
+   rong: 0
+};
 let answerElementsString = "";
 
 groupSelection.addEventListener("change", () => {
@@ -46,6 +52,10 @@ function getMarks() {
    marksCount = 0;
    nagative = 0;
    answerElementsString = "";
+   q2Count = 0;
+   qCount.q1 = 0;
+   qCount.q2 = 0;
+   qCount.rong = 0;
 
    for (let i = 0; i < answers.length; i++) {
       const answer = answers[i];
@@ -56,20 +66,26 @@ function getMarks() {
       } else if ((i >= 30 && i < 40) || (i >= 65 && i < 70) || (i >= 85 && i < 90)) {
          if (sameAndEqual(answer, correctAnswer)) {
             marksCount += 2;
+            qCount.q2++;
+            q2Count += 2;
             answerElementsString += createAnswerElement("true", `Q${i + 1}`, " +2.00", correctAnswer, answer);
          } else if (equal(answer, correctAnswer)) {
             const inDe = (answer.split(",").join("").length / correctAnswer.split(",").join("").length) * 2;
             marksCount += inDe;
             answerElementsString += createAnswerElement("true", `Q${i + 1}`, ` +${inDe.toFixed(2)}`, correctAnswer, answer);
+            qCount.q2++;
+            q2Count += inDe;
          } else {
             answerElementsString += createAnswerElement("false", `Q${i + 1}`, ` 0.00`, correctAnswer, answer);
          }
       } else if (answer === correctAnswer) {
          marksCount += 1;
+         qCount.q1++;
          answerElementsString += createAnswerElement("true", `Q${i + 1}`, ` +1.00`, correctAnswer, answer);
       } else {
          nagative -= 0.25;
          answerElementsString += createAnswerElement("", `Q${i + 1}`, ` -0.25`, correctAnswer, answer);
+         qCount.rong++;
       }
 
    }
@@ -98,7 +114,17 @@ submit.addEventListener("click", () => {
    marksVal.innerText = marksCount.toFixed(2);
    resultSection.innerHTML = answerElementsString;
 
+   console.log(qCount);
+   td1.innerText = qCount.q1;
+   td2.innerText = qCount.q2;
+   td3.innerText = qCount.rong;
+
+   td4.innerText = qCount.q1;
+   td5.innerText = q2Count.toFixed(2);
+   td6.innerText = (qCount.rong / 4).toFixed(2);
+
    resultSection.classList.add("active");
+   table.classList.add("active");
    ansOutput.classList.add("active");
 })
 

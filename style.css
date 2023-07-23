@@ -107,3 +107,55 @@ footer {
    font-weight: 900;
    font-family: cursive;
 }
+
+table {
+   position: relative;
+   width: 300px;
+   border-radius: 10px;
+   padding: 10px;
+   scale: 0;
+   background: #ffffff;
+   border: solid 1px #000000;
+}
+table.active {
+   scale: 1;
+}
+table * {
+   font-size: 14px;
+}
+tr {
+   position: relative;
+   display: grid;
+   width: 100%;
+   grid-template-columns: 3fr 3fr 3fr 3fr;
+   place-items: center;
+   padding: 5px 0;
+}
+td {
+   position: relative;
+   padding: 3px 5px;
+   display: grid;
+   border-radius: 10px;
+   place-items: center;
+}
+tr:first-child {
+   font-weight: bold;
+}
+tr td:first-child {
+   font-weight: bold;
+}
+tr:first-child td:nth-child(2),
+tr:first-child td:nth-child(3),
+tr:first-child td:nth-child(4) {
+   background: transparent;
+}
+tr td:nth-child(2),
+tr td:nth-child(3) {
+   background: #00ff00;
+   font-family: cursive;
+}
+tr td:nth-child(4) {
+   background: #ff0000;
+   font-family: cursive;
+}
+
