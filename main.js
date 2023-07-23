@@ -52,21 +52,21 @@ function getMarks() {
       const correctAnswer = GroupAns[currentGroupSelection][i];
 
       if (answerFilter(answer)) {
-         answerElementsString += createAnswerElement("false", `Q${i + 1}`, ` 0`, correctAnswer, answer);
+         answerElementsString += createAnswerElement("false", `Q${i + 1}`, ` 0.00`, correctAnswer, answer);
       } else if ((i >= 30 && i < 40) || (i >= 65 && i < 70) || (i >= 85 && i < 90)) {
          if (sameAndEqual(answer, correctAnswer)) {
             marksCount += 2;
-            answerElementsString += createAnswerElement("true", `Q${i + 1}`, " +2", correctAnswer, answer);
+            answerElementsString += createAnswerElement("true", `Q${i + 1}`, " +2.00", correctAnswer, answer);
          } else if (equal(answer, correctAnswer)) {
             const inDe = (answer.split(",").join("").length / correctAnswer.split(",").join("").length) * 2;
             marksCount += inDe;
             answerElementsString += createAnswerElement("true", `Q${i + 1}`, ` +${inDe.toFixed(2)}`, correctAnswer, answer);
          } else {
-            answerElementsString += createAnswerElement("false", `Q${i + 1}`, ` 0`, correctAnswer, answer);
+            answerElementsString += createAnswerElement("false", `Q${i + 1}`, ` 0.00`, correctAnswer, answer);
          }
       } else if (answer === correctAnswer) {
          marksCount += 1;
-         answerElementsString += createAnswerElement("true", `Q${i + 1}`, ` +1`, correctAnswer, answer);
+         answerElementsString += createAnswerElement("true", `Q${i + 1}`, ` +1.00`, correctAnswer, answer);
       } else {
          nagative -= 0.25;
          answerElementsString += createAnswerElement("", `Q${i + 1}`, ` -0.25`, correctAnswer, answer);
