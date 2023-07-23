@@ -99,7 +99,7 @@ function answerFilter(ans) {
 // check equality and same values
 function sameAndEqual(a1, a2) {
    return a1.length === a2.length &&
-      a1.split(",").some(ans => a2.split(",").some(cAns => cAns == ans));
+      a1.split(",").every(ans => a2.split(",").some(cAns => cAns == ans));
 }
 
 // check equal values
