@@ -138,9 +138,6 @@ td {
    border-radius: 10px;
    place-items: center;
 }
-tr:first-child {
-   font-weight: bold;
-}
 tr td:first-child {
    font-weight: bold;
 }
@@ -157,6 +154,10 @@ tr td:nth-child(2),
 tr td:nth-child(3) {
    background: #00ff00;
    font-family: cursive;
+}
+tr:first-child {
+	font-weight: bold;
+	font-family: Arial;
 }
 tr td:nth-child(4) {
    background: #ff3838;
